@@ -1,6 +1,10 @@
 package com.murphy.jdbc.entity;
 
+import com.murphy.jdbc.demo.DateUtils;
+
 import javax.persistence.*;
+import java.text.ParseException;
+import java.util.Date;
 
 @Entity
 @Table(name = "student")
@@ -20,13 +24,33 @@ public class Student {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "date_of_birth")
+    @Temporal(TemporalType.DATE)
+    private Date dateOfBirth;
+
     public Student() {
     }
 
-    public Student(String firstName, String lastName, String email) {
+    public Student(String firstName, String lastName, String email) throws ParseException {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.dateOfBirth = DateUtils.parseDate("10/10/2020");
+    }
+
+    public Student(String firstName, String lastName, String email, Date dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public int getId() {
@@ -68,6 +92,7 @@ public class Student {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
                 '}';
     }
 }

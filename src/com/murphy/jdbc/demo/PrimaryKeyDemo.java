@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.text.ParseException;
+
 public class PrimaryKeyDemo {
 
     public static void main(String[] args) {
@@ -39,6 +41,8 @@ public class PrimaryKeyDemo {
 
             System.out.println("Done!");
 
+        } catch (ParseException e) {
+            e.printStackTrace();
         } finally {
             factory.close();
         }

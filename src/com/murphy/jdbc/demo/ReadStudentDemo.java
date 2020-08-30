@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.text.ParseException;
+
 public class ReadStudentDemo {
 
     public static void main(String[] args) {
@@ -55,6 +57,8 @@ public class ReadStudentDemo {
 
             System.out.println("Done!");
 
+        } catch (ParseException e) {
+            e.printStackTrace();
         } finally {
             factory.close();
         }
